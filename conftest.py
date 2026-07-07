@@ -30,9 +30,14 @@ def pytest_sessionfinish(session, exitstatus):
     if total == 0:
         return
         
-    # Alert on failure only
-    if failed == 0 and errors == 0:
-        print("\n[LINE Notification] All tests passed. Skipping LINE message to reduce noise.")
+    # Check if it is the midnight (Thailand) run. Midnight TH = 17:00 UTC
+    from datetime import datetime, timezone
+    now_utc = datetime.now(timezone.utc)
+    is_midnight_th = now_utc.hour == 17
+    
+    # If it is NOT the midnight run, and tests passed, skip sending the message
+    if not is_midnight_th and failed == 0 and errors == 0:
+        print("\n[LINE Notification] Hourly check passed. Skipping LINE message.")
         return
         
     status_icon = "✅" if failed == 0 and errors == 0 else "❌"

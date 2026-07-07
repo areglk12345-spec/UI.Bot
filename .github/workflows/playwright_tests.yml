@@ -11,7 +11,7 @@ on:
   pull_request:
     branches: [ main, master ]
   schedule:
-    - cron: '0 17 * * *' # Runs at 00:00 GMT+7 (midnight in Thailand)
+    - cron: '0 * * * *' # Runs at minute 0 past every hour
 
 jobs:
   test:
