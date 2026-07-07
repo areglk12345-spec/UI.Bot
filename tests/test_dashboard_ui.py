@@ -18,7 +18,7 @@ def test_dashboard_ui(page: Page):
     
     # Check main title
     expect(page).to_have_title("UI Bot Test Dashboard")
-    expect(page.locator("h1")).to_have_text("UI Bot Report")
+    expect(page.locator("h1")).to_have_text("UI Bot Test Report")
     
     # Check for the key metric cards
     expect(page.locator("text=Total Tests")).to_be_visible()
