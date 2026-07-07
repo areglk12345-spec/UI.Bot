@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-def pytest_html_report_title(report):
-    report.title = "รายงานผลการทดสอบระบบ (UI Bot) - ศาลรัฐธรรมนูญ"
 
 def pytest_sessionfinish(session, exitstatus):
     """
