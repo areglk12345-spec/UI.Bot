@@ -94,3 +94,27 @@ def test_accessibility(page: Page):
     # For now, we just ensure the tool runs successfully.
     print(f"Found {results.violations_count} accessibility violations.")
 
+def test_language_switch(page: Page):
+    """Test switching the website language to English."""
+    home = HomePage(page)
+    home.open(BASE_URL)
+    
+    # Click EN language switch
+    home.switch_to_english()
+    
+    # Assert URL changed or body is visible
+    expect(page.locator("body")).to_be_visible()
+    # Check if URL updated or just ensure it didn't crash
+    assert "/en/" in page.url or "Home" in page.url, f"Current url: {page.url}"
+
+@pytest.mark.parametrize("menu_name", ["รู้จักเรา", "คำวินิจฉัย", "บริการประชาชน"])
+def test_menu_navigation(page: Page, menu_name: str):
+    """Data-Driven Test: Try to click various top-level menus."""
+    home = HomePage(page)
+    home.open(BASE_URL)
+    
+    # Click the menu
+    home.click_menu(menu_name)
+    
+    # Assert body is still visible (no crash/404)
+    expect(page.locator("body")).to_be_visible()

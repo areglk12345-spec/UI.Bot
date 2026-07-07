@@ -30,6 +30,11 @@ def pytest_sessionfinish(session, exitstatus):
     if total == 0:
         return
         
+    # Alert on failure only
+    if failed == 0 and errors == 0:
+        print("\n[LINE Notification] All tests passed. Skipping LINE message to reduce noise.")
+        return
+        
     status_icon = "✅" if failed == 0 and errors == 0 else "❌"
     
     message = (
