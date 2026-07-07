@@ -55,12 +55,15 @@ def pytest_sessionfinish(session, exitstatus):
         f"⏭️ ข้าม (Skipped): {skipped}"
     )
     
-    # Add GitHub Pages link if running in GitHub Actions
+    # Add Dashboard link
     if os.getenv("GITHUB_ACTIONS") == "true":
         repo_owner = os.getenv("GITHUB_REPOSITORY_OWNER")
         repo_name = os.getenv("GITHUB_REPOSITORY", "").split("/")[-1]
         pages_url = f"https://{repo_owner}.github.io/{repo_name}/index.html"
-        message += f"\n\n📊 ดูรายงานผลแบบเต็มได้ที่:\n{pages_url}"
+    else:
+        pages_url = "https://areglk12345-spec.github.io/UI.Bot/index.html (อัปเดตล่าสุดบน GitHub)"
+        
+    message += f"\n\n📊 ดู Dashboard แบบเต็มได้ที่:\n{pages_url}"
     
     send_line_message(message)
 
