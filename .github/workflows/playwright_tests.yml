@@ -54,10 +54,13 @@ jobs:
     - name: Prepare Pages directory
       if: always()
       run: |
+        python generate_dashboard.py || true
         mkdir -p public
-        cp index.html public/ || true
+        cp dashboard.html public/index.html || true
+        cp index.html public/old_index.html || true
         cp report_desktop.html public/ || true
         cp report_mobile.html public/ || true
+        cp dashboard_template.html public/ || true
         cp -r screenshots public/screenshots || true
         
     - name: Upload Pages artifact
