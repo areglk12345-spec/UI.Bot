@@ -40,26 +40,7 @@ def test_extract_links(page: Page):
         if text:
             print(f"  - {text}")
 
-@pytest.fixture(scope="session")
-def browser_context_args(browser_context_args, playwright):
-    """Configure browser context to emulate an iPhone 13 for mobile tests"""
-    iphone_13 = playwright.devices['iPhone 13']
-    return {
-        **browser_context_args,
-        **iphone_13,
-    }
 
-@pytest.mark.mobile
-def test_mobile_responsive(page: Page):
-    """Test the homepage on a mobile viewport"""
-    home = HomePage(page)
-    home.open(BASE_URL)
-    
-    os.makedirs("screenshots", exist_ok=True)
-    page.screenshot(path="screenshots/pytest_mobile_view.png")
-    
-    # Just a simple assertion to ensure page is loaded
-    expect(page.locator("body")).to_be_visible()
 
 @pytest.mark.parametrize("keyword", ["รัฐธรรมนูญ", "ศาล", "พรรคการเมือง"])
 def test_e2e_search_journey(page: Page, keyword: str):

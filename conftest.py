@@ -41,9 +41,10 @@ def pytest_sessionfinish(session, exitstatus):
         return
         
     status_icon = "✅" if failed == 0 and errors == 0 else "❌"
+    platform = os.getenv("TEST_PLATFORM", "Desktop 💻")
     
     message = (
-        f"{status_icon} สรุปผลการทดสอบ UI Bot (ศาลรัฐธรรมนูญ)\n\n"
+        f"{status_icon} สรุปผลการทดสอบ UI Bot ({platform})\n\n"
         f"จำนวนทั้งหมด: {total} เคส\n"
         f"✅ ผ่าน (Passed): {passed}\n"
         f"❌ ไม่ผ่าน (Failed): {failed}\n"
@@ -55,7 +56,7 @@ def pytest_sessionfinish(session, exitstatus):
     if os.getenv("GITHUB_ACTIONS") == "true":
         repo_owner = os.getenv("GITHUB_REPOSITORY_OWNER")
         repo_name = os.getenv("GITHUB_REPOSITORY", "").split("/")[-1]
-        pages_url = f"https://{repo_owner}.github.io/{repo_name}/report.html"
+        pages_url = f"https://{repo_owner}.github.io/{repo_name}/index.html"
         message += f"\n\n📊 ดูรายงานผลแบบเต็มได้ที่:\n{pages_url}"
     
     send_line_message(message)

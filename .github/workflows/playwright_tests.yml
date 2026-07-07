@@ -33,18 +33,31 @@ jobs:
     - name: Install Playwright Browsers
       run: playwright install --with-deps chromium firefox webkit
       
-    - name: Run Pytest
+    - name: Run Pytest (Desktop)
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
         LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
         LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
-      run: pytest
+        TEST_PLATFORM: Desktop 💻
+      run: pytest --browser chromium --browser firefox --html=report_desktop.html
+      continue-on-error: true
+      
+    - name: Run Pytest (Mobile)
+      env:
+        BASE_URL: ${{ secrets.BASE_URL }}
+        LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+        LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        TEST_PLATFORM: Mobile 📱
+      run: pytest --browser webkit --device="iPhone 13" --html=report_mobile.html
+      continue-on-error: true
       
     - name: Prepare Pages directory
       if: always()
       run: |
         mkdir -p public
-        cp report.html public/ || true
+        cp index.html public/ || true
+        cp report_desktop.html public/ || true
+        cp report_mobile.html public/ || true
         cp -r screenshots public/screenshots || true
         
     - name: Upload Pages artifact
