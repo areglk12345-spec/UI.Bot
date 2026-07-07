@@ -5,3 +5,4 @@ python-dotenv>=1.0.0
 axe-playwright-python>=0.1.0
 pytest-playwright-visual>=2.1.2
 pytest-json-report
+requests

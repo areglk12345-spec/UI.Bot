@@ -49,6 +49,7 @@ jobs:
         mkdir -p public
         cp dashboard.html public/index.html
         cp dashboard_template.html public/ || true
+        cp report.json public/report.json || true
         cp -r screenshots public/screenshots || true
         
     - name: Upload Pages artifact
