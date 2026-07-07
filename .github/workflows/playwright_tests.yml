@@ -39,7 +39,7 @@ jobs:
         LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
         LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         TEST_PLATFORM: Desktop 💻
-      run: pytest
+      run: pytest -v > pytest_output.txt 2>&1
       continue-on-error: true
       
     - name: Prepare Pages directory
@@ -50,6 +50,7 @@ jobs:
         cp dashboard.html public/index.html
         cp dashboard_template.html public/ || true
         cp report.json public/report.json || true
+        cp pytest_output.txt public/pytest_output.txt || true
         cp -r screenshots public/screenshots || true
         
     - name: Upload Pages artifact
