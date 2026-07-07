@@ -91,7 +91,7 @@ def generate_dashboard():
     # Find tbody and replace inner
     tbody_pattern = re.compile(r'<tbody[^>]*>.*?</tbody>', re.DOTALL)
     new_tbody = f'<tbody class="divide-y divide-outline-variant/10">{rows_html}</tbody>'
-    html = tbody_pattern.sub(new_tbody, html)
+    html = tbody_pattern.sub(lambda m: new_tbody, html)
     
     # Fix table headers
     thead_pattern = re.compile(r'<thead[^>]*>.*?</thead>', re.DOTALL)
@@ -105,7 +105,7 @@ def generate_dashboard():
         </tr>
     </thead>
     '''
-    html = thead_pattern.sub(new_thead, html)
+    html = thead_pattern.sub(lambda m: new_thead, html)
     
     # Save output
     with open(output_html, 'w', encoding='utf-8') as f:
