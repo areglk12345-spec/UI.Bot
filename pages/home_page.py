@@ -9,6 +9,7 @@ class HomePage(BasePage):
         self.search_button = page.get_by_role("button", name="ค้นหา")
         self.search_input = page.get_by_placeholder("ค้นหา", exact=False)
         self.en_lang_button = page.locator("a.text-light-gray", has_text="EN").first
+        self.th_lang_button = page.locator("a.text-light-gray", has_text="TH").first
         
         # Elements to mask during visual regression
         self.image_mask = page.locator("img")
@@ -31,7 +32,13 @@ class HomePage(BasePage):
         """Click the EN language switch button."""
         if self.en_lang_button.is_visible():
             self.en_lang_button.click()
-            self.page.wait_for_load_state("networkidle")
+            self.page.wait_for_load_state("domcontentloaded")
+            
+    def switch_to_thai(self):
+        """Click the TH language switch button."""
+        if self.th_lang_button.is_visible():
+            self.th_lang_button.click()
+            self.page.wait_for_load_state("domcontentloaded")
         
     def click_menu(self, menu_name: str):
         """Click a menu item by its text."""

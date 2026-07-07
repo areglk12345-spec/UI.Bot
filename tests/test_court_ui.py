@@ -2,7 +2,20 @@ import os
 import pytest
 from playwright.sync_api import Page, expect
 from dotenv import load_dotenv
+import csv
 from pages.home_page import HomePage
+
+def get_search_data():
+    """Read search keywords from CSV file."""
+    data = []
+    csv_path = os.path.join(os.path.dirname(__file__), "test_data.csv")
+    if os.path.exists(csv_path):
+        with open(csv_path, newline='', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                data.append(row['keyword'])
+    # Fallback if csv not found or empty
+    return data if data else ["รัฐธรรมนูญ"]
 
 # Load environment variables from .env file
 load_dotenv()
@@ -42,7 +55,7 @@ def test_extract_links(page: Page):
 
 
 
-@pytest.mark.parametrize("keyword", ["รัฐธรรมนูญ", "ศาล", "พรรคการเมือง"])
+@pytest.mark.parametrize("keyword", get_search_data())
 def test_e2e_search_journey(page: Page, keyword: str):
     """Data-Driven Test: Try to find and use search with multiple keywords."""
     home = HomePage(page)
@@ -57,7 +70,7 @@ def test_e2e_search_journey(page: Page, keyword: str):
         if search_input.count() > 0 and search_input.is_visible():
             search_input.fill(keyword)
             search_input.press("Enter")
-            page.wait_for_load_state("networkidle")
+            page.wait_for_load_state("domcontentloaded")
         
     # Check that the page hasn't crashed (body still visible)
     expect(page.locator("body")).to_be_visible()
@@ -83,10 +96,14 @@ def test_language_switch(page: Page):
     # Click EN language switch
     home.switch_to_english()
     
-    # Assert URL changed or body is visible
+    # Assert URL changed to English
     expect(page.locator("body")).to_be_visible()
-    # Check if URL updated or just ensure it didn't crash
     assert "/en/" in page.url or "Home" in page.url, f"Current url: {page.url}"
+    
+    # Switch back to Thai
+    home.switch_to_thai()
+    expect(page.locator("body")).to_be_visible()
+    assert "/th/" in page.url or "Home" in page.url, f"Current url: {page.url}"
 
 @pytest.mark.parametrize("menu_name", ["รู้จักเรา", "คำวินิจฉัย", "บริการประชาชน"])
 def test_menu_navigation(page: Page, menu_name: str):
