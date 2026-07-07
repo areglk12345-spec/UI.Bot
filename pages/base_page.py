@@ -6,5 +6,4 @@ class BasePage:
         
     def navigate(self, url: str):
         """Navigate to a given URL."""
-        self.page.goto(url)
-        self.page.wait_for_load_state("networkidle")
+        self.page.goto(url, wait_until="domcontentloaded")
