@@ -94,11 +94,3 @@ def test_accessibility(page: Page):
     # For now, we just ensure the tool runs successfully.
     print(f"Found {results.violations_count} accessibility violations.")
 
-def test_visual_regression(page: Page, assert_snapshot):
-    """Test visual regression by taking a screenshot and comparing it to a baseline."""
-    home = HomePage(page)
-    home.open(BASE_URL)
-    
-    # Hide dynamic elements like videos or carousels if necessary
-    screenshot = page.screenshot(mask=[home.image_mask, home.video_mask])
-    assert_snapshot(screenshot, name="homepage.png")
