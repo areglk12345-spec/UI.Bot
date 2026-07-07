@@ -1,511 +1,167 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Enterprise SaaS Dashboard - Clean &amp; Minimal</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>UI Bot Test Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "error-container": "#ffdad6",
-                        "on-surface-variant": "#434655",
-                        "surface-dim": "#d8dadc",
-                        "secondary-fixed-dim": "#c0c1ff",
-                        "on-error": "#ffffff",
-                        "on-background": "#191c1e",
-                        "on-tertiary-container": "#ffede6",
-                        "secondary": "#4648d4",
-                        "on-error-container": "#93000a",
-                        "inverse-primary": "#b4c5ff",
-                        "tertiary": "#943700",
-                        "primary-fixed": "#dbe1ff",
-                        "surface": "#f7f9fb",
-                        "on-secondary-container": "#fffbff",
-                        "on-surface": "#191c1e",
-                        "tertiary-fixed": "#ffdbcd",
-                        "surface-bright": "#f7f9fb",
-                        "on-primary-container": "#eeefff",
-                        "on-secondary-fixed": "#07006c",
-                        "surface-container-highest": "#e0e3e5",
-                        "secondary-container": "#6063ee",
-                        "on-secondary": "#ffffff",
-                        "surface-tint": "#0053db",
+                    colors: {
+                        primary: "#004ac6",
+                        surface: "#f7f9fb",
                         "surface-container-lowest": "#ffffff",
-                        "background": "#f7f9fb",
-                        "on-tertiary": "#ffffff",
-                        "tertiary-container": "#bc4800",
-                        "on-primary-fixed": "#00174b",
-                        "outline": "#737686",
-                        "outline-variant": "#c3c6d7",
-                        "on-primary": "#ffffff",
-                        "tertiary-fixed-dim": "#ffb596",
-                        "primary-container": "#2563eb",
-                        "primary-fixed-dim": "#b4c5ff",
-                        "surface-container": "#eceef0",
                         "surface-container-low": "#f2f4f6",
-                        "on-secondary-fixed-variant": "#2f2ebe",
-                        "primary": "#004ac6",
-                        "on-tertiary-fixed-variant": "#7d2d00",
-                        "inverse-surface": "#2d3133",
-                        "error": "#ba1a1a",
-                        "secondary-fixed": "#e1e0ff",
-                        "on-tertiary-fixed": "#360f00",
-                        "on-primary-fixed-variant": "#003ea8",
-                        "surface-variant": "#e0e3e5",
-                        "surface-container-high": "#e6e8ea",
-                        "inverse-on-surface": "#eff1f3"
+                        "on-surface": "#191c1e",
+                        "on-surface-variant": "#434655",
+                        "outline-variant": "#c3c6d7",
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "section-margin": "48px",
-                        "container-padding": "24px",
-                        "card-gap": "24px",
-                        "unit": "8px",
-                        "gutter": "16px"
-                    },
-                    "fontFamily": {
-                        "headline-md": ["Inter"],
-                        "headline-lg-mobile": ["Inter"],
-                        "body-md": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "headline-sm": ["Inter"],
-                        "label-md": ["Inter"]
-                    },
-                    "fontSize": {
-                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                        "headline-lg-mobile": ["26px", {"lineHeight": "1.2", "fontWeight": "600"}],
-                        "body-md": ["14px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
-                        "body-lg": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
-                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
-                        "headline-sm": ["18px", {"lineHeight": "1.4", "letterSpacing": "0em", "fontWeight": "600"}],
-                        "label-md": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
                     }
-                },
-            },
+                }
+            }
         }
     </script>
-<style>
+    <style>
         body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-        }
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e0e3e5; border-radius: 10px; }
-        .chart-path-main { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 3s ease-in-out forwards; }
-        @keyframes dash { to { stroke-dashoffset: 0; } }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
     </style>
 </head>
-<body class="bg-surface text-on-surface custom-scrollbar">
-<!-- Sidebar Navigation -->
-<aside class="fixed left-0 top-0 h-full w-[260px] bg-surface-container-low border-r border-outline-variant/30 flex flex-col p-container-padding gap-gutter z-50">
-<div class="flex items-center gap-gutter mb-section-margin">
-<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-on-primary shadow-sm">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dataset</span>
-</div>
-<div>
-<h1 class="font-headline-sm text-headline-sm text-on-surface">Enterprise</h1>
-<p class="font-label-md text-on-surface-variant opacity-70">Management</p>
-</div>
-</div>
-<nav class="flex flex-col gap-unit flex-grow">
-<a class="flex items-center gap-gutter px-gutter py-unit bg-surface-container-highest text-on-surface rounded-full font-semibold transition-all duration-200" href="#">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-body-md">Overview</span>
-</a>
-<a class="flex items-center gap-gutter px-gutter py-unit text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-full transition-all duration-200" href="#">
-<span class="material-symbols-outlined">insights</span>
-<span class="font-body-md">Analytics</span>
-</a>
-<a class="flex items-center gap-gutter px-gutter py-unit text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-full transition-all duration-200" href="#">
-<span class="material-symbols-outlined">assessment</span>
-<span class="font-body-md">Reports</span>
-</a>
-<a class="flex items-center gap-gutter px-gutter py-unit text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-full transition-all duration-200" href="#">
-<span class="material-symbols-outlined">group</span>
-<span class="font-body-md">Team</span>
-</a>
-<a class="flex items-center gap-gutter px-gutter py-unit text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-full transition-all duration-200" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-body-md">Settings</span>
-</a>
-</nav>
-<div class="mt-auto pt-container-padding border-t border-outline-variant/30">
-<div class="flex items-center gap-gutter p-unit hover:bg-surface-container-high rounded-xl cursor-pointer transition-all">
-<img class="w-10 h-10 rounded-full border border-outline-variant/50 object-cover" data-alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX_vRaWlQccEPkAXYwQeSv3SZ0f8h-7KphNcStUQ13UuvZlf4FBOW87VMp_KzksmFo7QoPEa6lCYOpbnpVdkfxiJ5qNESqdsbLrrT36gbHOBN584pyCyrGxamQoZlHHsDbFmWOxH6QYKgXnIEHvj_MRK1K98R8mpXK2koImduJ-9kLQGH5lJomzHwaRXp7CBxGK07Va0P5xVgS--5lphgdq88gyXv6xE3My1HYW58z_5XT4S-0cKQ6"/>
-<div class="overflow-hidden">
-<p class="font-label-md text-on-surface font-bold truncate">Alex Rivera</p>
-<p class="font-label-md text-on-surface-variant truncate opacity-60">Admin</p>
-</div>
-<span class="material-symbols-outlined ml-auto text-on-surface-variant opacity-50">unfold_more</span>
-</div>
-</div>
-</aside>
-<!-- Main Content Wrapper -->
-<main class="ml-[260px] min-h-screen flex flex-col">
-<!-- Top Navigation Bar -->
-<header class="h-20 bg-surface/80 backdrop-blur-md flex justify-between items-center px-section-margin w-full border-b border-outline-variant/20 sticky top-0 z-40">
-<div class="flex items-center gap-gutter w-1/3">
-<div class="relative w-full max-w-sm">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60">search</span>
-<input class="w-full pl-12 pr-4 py-2.5 bg-surface-container-low border-none rounded-full focus:ring-1 focus:ring-primary/20 outline-none text-body-md font-body-md transition-all placeholder:text-on-surface-variant/40" placeholder="Search..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-gutter">
-<button class="relative p-2.5 text-on-surface-variant hover:text-primary transition-all bg-surface-container-low rounded-full">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-error rounded-full ring-2 ring-surface"></span>
-</button>
-<button class="p-2.5 text-on-surface-variant hover:text-primary transition-all bg-surface-container-low rounded-full">
-<span class="material-symbols-outlined">help</span>
-</button>
-<div class="h-8 w-[1px] bg-outline-variant/30 mx-unit"></div>
-<div class="flex items-center gap-unit cursor-pointer group px-gutter py-2 bg-surface-container-low rounded-full hover:bg-surface-container-high transition-all">
-<span class="font-label-md text-on-surface font-semibold">Dashboard</span>
-<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-all">expand_more</span>
-</div>
-</div>
-</header>
-<!-- Canvas Area -->
-<div class="p-section-margin flex flex-col gap-section-margin max-w-7xl mx-auto w-full">
-<!-- Page Heading -->
-<div class="flex justify-between items-center">
-<div>
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-unit">Executive Overview</h2>
-<p class="font-body-md text-on-surface-variant opacity-70">Performance metrics for the current billing cycle.</p>
-</div>
-<button class="px-container-padding py-3 bg-primary text-on-primary rounded-full font-semibold flex items-center gap-unit hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all">
-<span class="material-symbols-outlined !text-[20px]">download</span>
-                    Export Report
-                </button>
-</div>
-<!-- Top Row: Metric Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-<!-- Card 1: Revenue (Light Blue) -->
-<div class="bg-[#f0f4ff] p-container-padding rounded-2xl border border-blue-100/50 flex flex-col gap-unit transition-transform hover:-translate-y-1">
-<div class="flex justify-between items-start">
-<span class="font-label-md text-blue-800/70 uppercase tracking-widest font-semibold">Total Revenue</span>
-<div class="p-2.5 bg-white/60 text-blue-600 rounded-xl">
-<span class="material-symbols-outlined">payments</span>
-</div>
-</div>
-<div class="flex items-baseline gap-unit mt-unit">
-<span class="font-headline-md text-on-surface">$248,392</span>
-<span class="text-emerald-600 font-label-md flex items-center">
-<span class="material-symbols-outlined !text-sm">arrow_upward</span>
-                            12%
-                        </span>
-</div>
-<div class="h-10 w-full mt-gutter flex items-end gap-[3px]">
-<div class="flex-1 h-[20%] bg-blue-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[40%] bg-blue-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[35%] bg-blue-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[60%] bg-blue-400/60 rounded-t-sm"></div>
-<div class="flex-1 h-[55%] bg-blue-400/60 rounded-t-sm"></div>
-<div class="flex-1 h-[80%] bg-blue-500/80 rounded-t-sm"></div>
-<div class="flex-1 h-[100%] bg-blue-500 rounded-t-sm"></div>
-</div>
-</div>
-<!-- Card 2: Active Users (Light Green) -->
-<div class="bg-[#f2faf5] p-container-padding rounded-2xl border border-emerald-100/50 flex flex-col gap-unit transition-transform hover:-translate-y-1">
-<div class="flex justify-between items-start">
-<span class="font-label-md text-emerald-800/70 uppercase tracking-widest font-semibold">Active Users</span>
-<div class="p-2.5 bg-white/60 text-emerald-600 rounded-xl">
-<span class="material-symbols-outlined">person</span>
-</div>
-</div>
-<div class="flex items-baseline gap-unit mt-unit">
-<span class="font-headline-md text-on-surface">14.2k</span>
-<span class="text-emerald-600 font-label-md flex items-center">
-<span class="material-symbols-outlined !text-sm">arrow_upward</span>
-                            5.4%
-                        </span>
-</div>
-<div class="h-10 w-full mt-gutter flex items-end gap-[3px]">
-<div class="flex-1 h-[60%] bg-emerald-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[50%] bg-emerald-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[75%] bg-emerald-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[80%] bg-emerald-400/60 rounded-t-sm"></div>
-<div class="flex-1 h-[70%] bg-emerald-400/60 rounded-t-sm"></div>
-<div class="flex-1 h-[90%] bg-emerald-500/80 rounded-t-sm"></div>
-<div class="flex-1 h-[100%] bg-emerald-500 rounded-t-sm"></div>
-</div>
-</div>
-<!-- Card 3: New Signups (Light Amber) -->
-<div class="bg-[#fff9f2] p-container-padding rounded-2xl border border-amber-100/50 flex flex-col gap-unit transition-transform hover:-translate-y-1">
-<div class="flex justify-between items-start">
-<span class="font-label-md text-amber-800/70 uppercase tracking-widest font-semibold">New Signups</span>
-<div class="p-2.5 bg-white/60 text-amber-600 rounded-xl">
-<span class="material-symbols-outlined">person_add</span>
-</div>
-</div>
-<div class="flex items-baseline gap-unit mt-unit">
-<span class="font-headline-md text-on-surface">1,204</span>
-<span class="text-rose-600 font-label-md flex items-center">
-<span class="material-symbols-outlined !text-sm">arrow_downward</span>
-                            2.1%
-                        </span>
-</div>
-<div class="h-10 w-full mt-gutter flex items-end gap-[3px]">
-<div class="flex-1 h-[90%] bg-amber-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[100%] bg-amber-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[80%] bg-amber-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[60%] bg-amber-400/60 rounded-t-sm"></div>
-<div class="flex-1 h-[40%] bg-amber-400/60 rounded-t-sm"></div>
-<div class="flex-1 h-[45%] bg-amber-500/80 rounded-t-sm"></div>
-<div class="flex-1 h-[30%] bg-amber-500 rounded-t-sm"></div>
-</div>
-</div>
-<!-- Card 4: Conv. Rate (Light Indigo) -->
-<div class="bg-[#f7f6ff] p-container-padding rounded-2xl border border-indigo-100/50 flex flex-col gap-unit transition-transform hover:-translate-y-1">
-<div class="flex justify-between items-start">
-<span class="font-label-md text-indigo-800/70 uppercase tracking-widest font-semibold">Conv. Rate</span>
-<div class="p-2.5 bg-white/60 text-indigo-600 rounded-xl">
-<span class="material-symbols-outlined">query_stats</span>
-</div>
-</div>
-<div class="flex items-baseline gap-unit mt-unit">
-<span class="font-headline-md text-on-surface">3.42%</span>
-<span class="text-emerald-600 font-label-md flex items-center">
-<span class="material-symbols-outlined !text-sm">arrow_upward</span>
-                            0.8%
-                        </span>
-</div>
-<div class="h-10 w-full mt-gutter flex items-end gap-[3px]">
-<div class="flex-1 h-[30%] bg-indigo-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[40%] bg-indigo-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[50%] bg-indigo-300/40 rounded-t-sm"></div>
-<div class="flex-1 h-[45%] bg-indigo-400/60 rounded-t-sm"></div>
-<div class="flex-1 h-[60%] bg-indigo-400/60 rounded-t-sm"></div>
-<div class="flex-1 h-[75%] bg-indigo-500/80 rounded-t-sm"></div>
-<div class="flex-1 h-[80%] bg-indigo-500 rounded-t-sm"></div>
-</div>
-</div>
-</div>
-<!-- Middle Row: Charts -->
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-section-margin">
-<!-- Large Chart Card -->
-<div class="lg:col-span-2 bg-surface-container-lowest p-section-margin rounded-3xl border border-outline-variant/10 shadow-sm flex flex-col gap-gutter">
-<div class="flex justify-between items-center mb-gutter">
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Revenue Growth</h3>
-<p class="font-body-md text-on-surface-variant opacity-60">Comparative analysis vs. last fiscal month</p>
-</div>
-<div class="flex items-center gap-gutter">
-<div class="flex items-center gap-unit">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-<span class="font-label-md text-on-surface-variant">Current</span>
-</div>
-<div class="flex items-center gap-unit">
-<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
-<span class="font-label-md text-on-surface-variant">Previous</span>
-</div>
-</div>
-</div>
-<div class="relative h-72 w-full bg-surface-container-low/30 rounded-2xl p-container-padding">
-<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 200">
-<path class="opacity-30" d="M0,150 Q50,160 100,140 T200,130 T300,160 T400,140 T500,150 T600,130 T700,140 T800,155" fill="none" stroke="#737686" stroke-dasharray="4" stroke-width="1.5"></path>
-<path class="chart-path-main" d="M0,160 Q50,140 100,150 T200,120 T300,100 T400,130 T500,90 T600,110 T700,80 T800,100" fill="none" stroke="#004ac6" stroke-linecap="round" stroke-width="2.5"></path>
-<g class="font-label-md fill-on-surface-variant/40" style="font-size: 11px;">
-<text x="10" y="195">Jan</text><text x="150" y="195">Feb</text><text x="290" y="195">Mar</text>
-<text x="430" y="195">Apr</text><text x="570" y="195">May</text><text x="710" y="195">Jun</text>
-</g>
-</svg>
-</div>
-</div>
-<!-- Distribution Card -->
-<div class="bg-surface-container-lowest p-section-margin rounded-3xl border border-outline-variant/10 shadow-sm flex flex-col gap-gutter">
-<h3 class="font-headline-sm text-headline-sm text-on-surface">User Distribution</h3>
-<div class="relative flex items-center justify-center h-56 mt-gutter">
-<div class="w-44 h-44 rounded-full border-[10px] border-surface-container-high flex items-center justify-center">
-<div class="text-center">
-<p class="font-headline-sm text-on-surface">64%</p>
-<p class="font-label-md text-on-surface-variant opacity-60">Enterprise</p>
-</div>
-</div>
-<svg class="absolute inset-0 w-full h-full -rotate-90" viewbox="0 0 100 100">
-<circle cx="50" cy="50" fill="transparent" r="42" stroke="#004ac6" stroke-dasharray="168 264" stroke-linecap="round" stroke-width="10"></circle>
-</svg>
-</div>
-<div class="space-y-gutter mt-auto">
-<div class="flex justify-between items-center text-body-md">
-<div class="flex items-center gap-gutter">
-<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-<span class="text-on-surface">Enterprise</span>
-</div>
-<span class="font-bold text-on-surface">64%</span>
-</div>
-<div class="flex justify-between items-center text-body-md">
-<div class="flex items-center gap-gutter">
-<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
-<span class="text-on-surface">Startup</span>
-</div>
-<span class="font-bold text-on-surface">22%</span>
-</div>
-<div class="flex justify-between items-center text-body-md">
-<div class="flex items-center gap-gutter">
-<span class="w-2.5 h-2.5 rounded-full bg-surface-container-high"></span>
-<span class="text-on-surface">Individual</span>
-</div>
-<span class="font-bold text-on-surface">14%</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Bottom Row: Table & Activity -->
-<div class="grid grid-cols-1 xl:grid-cols-3 gap-section-margin">
-<!-- Transactions Table -->
-<div class="xl:col-span-2 bg-surface-container-lowest rounded-3xl border border-outline-variant/10 shadow-sm overflow-hidden">
-<div class="px-section-margin py-gutter border-b border-outline-variant/10 flex justify-between items-center">
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Transactions</h3>
-<button class="text-primary font-semibold font-label-md hover:underline decoration-primary/30 underline-offset-4 transition-all">View All</button>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low/30 border-b border-outline-variant/10">
-<th class="px-section-margin py-gutter font-label-md text-on-surface-variant/60 uppercase tracking-widest">Reference</th>
-<th class="px-gutter py-gutter font-label-md text-on-surface-variant/60 uppercase tracking-widest">Customer</th>
-<th class="px-gutter py-gutter font-label-md text-on-surface-variant/60 uppercase tracking-widest">Amount</th>
-<th class="px-gutter py-gutter font-label-md text-on-surface-variant/60 uppercase tracking-widest">Status</th>
-<th class="px-section-margin py-gutter font-label-md text-on-surface-variant/60 uppercase tracking-widest text-right">Date</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant/10">
-<tr class="hover:bg-surface-container-low/50 transition-colors group">
-<td class="px-section-margin py-gutter font-label-md text-on-surface font-semibold">#TXN-9402</td>
-<td class="px-gutter py-gutter">
-<div class="flex items-center gap-gutter">
-<div class="w-9 h-9 rounded-full bg-primary-fixed-dim text-on-primary-fixed-variant text-xs font-bold flex items-center justify-center">JD</div>
-<span class="text-body-md text-on-surface">Jane Doe</span>
-</div>
-</td>
-<td class="px-gutter py-gutter font-body-md text-on-surface font-medium">$1,299.00</td>
-<td class="px-gutter py-gutter">
-<span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-bold rounded-full border border-emerald-100">COMPLETED</span>
-</td>
-<td class="px-section-margin py-gutter text-body-md text-on-surface-variant/60 text-right">Oct 24, 2023</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors group">
-<td class="px-section-margin py-gutter font-label-md text-on-surface font-semibold">#TXN-9381</td>
-<td class="px-gutter py-gutter">
-<div class="flex items-center gap-gutter">
-<div class="w-9 h-9 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant text-xs font-bold flex items-center justify-center">MK</div>
-<span class="text-body-md text-on-surface">Mark K.</span>
-</div>
-</td>
-<td class="px-gutter py-gutter font-body-md text-on-surface font-medium">$450.00</td>
-<td class="px-gutter py-gutter">
-<span class="px-3 py-1 bg-amber-50 text-amber-700 text-[11px] font-bold rounded-full border border-amber-100">PENDING</span>
-</td>
-<td class="px-section-margin py-gutter text-body-md text-on-surface-variant/60 text-right">Oct 23, 2023</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors group">
-<td class="px-section-margin py-gutter font-label-md text-on-surface font-semibold">#TXN-9211</td>
-<td class="px-gutter py-gutter">
-<div class="flex items-center gap-gutter">
-<div class="w-9 h-9 rounded-full bg-primary-fixed-dim text-on-primary-fixed-variant text-xs font-bold flex items-center justify-center">AL</div>
-<span class="text-body-md text-on-surface">Aria L.</span>
-</div>
-</td>
-<td class="px-gutter py-gutter font-body-md text-on-surface font-medium">$2,100.00</td>
-<td class="px-gutter py-gutter">
-<span class="px-3 py-1 bg-rose-50 text-rose-700 text-[11px] font-bold rounded-full border border-rose-100">CANCELLED</span>
-</td>
-<td class="px-section-margin py-gutter text-body-md text-on-surface-variant/60 text-right">Oct 22, 2023</td>
-</tr>
-<tr class="hover:bg-surface-container-low/50 transition-colors group">
-<td class="px-section-margin py-gutter font-label-md text-on-surface font-semibold">#TXN-9014</td>
-<td class="px-gutter py-gutter">
-<div class="flex items-center gap-gutter">
-<div class="w-9 h-9 rounded-full bg-primary-fixed-dim text-on-primary-fixed-variant text-xs font-bold flex items-center justify-center">TR</div>
-<span class="text-body-md text-on-surface">Tech Rivers</span>
-</div>
-</td>
-<td class="px-gutter py-gutter font-body-md text-on-surface font-medium">$89.00</td>
-<td class="px-gutter py-gutter">
-<span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-bold rounded-full border border-emerald-100">COMPLETED</span>
-</td>
-<td class="px-section-margin py-gutter text-body-md text-on-surface-variant/60 text-right">Oct 21, 2023</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<!-- Notifications/Activity List -->
-<div class="bg-surface-container-lowest p-section-margin rounded-3xl border border-outline-variant/10 shadow-sm flex flex-col gap-gutter">
-<h3 class="font-headline-sm text-headline-sm text-on-surface">System Activity</h3>
-<div class="flex flex-col gap-gutter mt-gutter">
-<div class="flex gap-gutter group cursor-pointer">
-<div class="flex flex-col items-center">
-<div class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center transition-transform group-hover:scale-110">
-<span class="material-symbols-outlined !text-[18px]">notifications_active</span>
-</div>
-<div class="w-[1.5px] h-full bg-surface-container-high group-last:hidden my-2"></div>
-</div>
-<div class="pb-gutter">
-<p class="font-label-md text-on-surface font-bold">Threshold Alert: CPU usage</p>
-<p class="font-body-md text-on-surface-variant opacity-60 mb-1">Database cluster 02 reached 85% capacity.</p>
-<span class="font-label-md text-on-surface-variant opacity-40">2 minutes ago</span>
-</div>
-</div>
-<div class="flex gap-gutter group cursor-pointer">
-<div class="flex flex-col items-center">
-<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-transform group-hover:scale-110">
-<span class="material-symbols-outlined !text-[18px]">person_add</span>
-</div>
-<div class="w-[1.5px] h-full bg-surface-container-high group-last:hidden my-2"></div>
-</div>
-<div class="pb-gutter">
-<p class="font-label-md text-on-surface font-bold">New Team Member</p>
-<p class="font-body-md text-on-surface-variant opacity-60 mb-1">Sophia Chen joined the Dev team.</p>
-<span class="font-label-md text-on-surface-variant opacity-40">1 hour ago</span>
-</div>
-</div>
-<div class="flex gap-gutter group cursor-pointer">
-<div class="flex flex-col items-center">
-<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-transform group-hover:scale-110">
-<span class="material-symbols-outlined !text-[18px]">security</span>
-</div>
-<div class="w-[1.5px] h-full bg-surface-container-high group-last:hidden my-2"></div>
-</div>
-<div class="pb-gutter">
-<p class="font-label-md text-on-surface font-bold">Security Audit</p>
-<p class="font-body-md text-on-surface-variant opacity-60 mb-1">Quarterly compliance check completed.</p>
-<span class="font-label-md text-on-surface-variant opacity-40">4 hours ago</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebarLinks = document.querySelectorAll('aside nav a');
-            sidebarLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    sidebarLinks.forEach(l => {
-                        l.classList.remove('bg-surface-container-highest', 'text-on-surface', 'font-semibold');
-                        l.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high', 'hover:text-on-surface');
-                    });
-                    link.classList.add('bg-surface-container-highest', 'text-on-surface', 'font-semibold');
-                    link.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high', 'hover:text-on-surface');
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header class="h-16 bg-surface-container-lowest border-b border-outline-variant/30 flex items-center justify-between px-8 shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white shadow-sm">
+                <span class="material-symbols-outlined !text-[18px]">verified</span>
+            </div>
+            <h1 class="text-lg font-semibold tracking-tight text-on-surface">UI Bot Test Report</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="text-sm text-on-surface-variant flex items-center gap-2">
+                <span class="material-symbols-outlined !text-[18px]">account_circle</span>
+                Admin View
+            </div>
+            <a href="https://github.com/areglk12345-spec/UI.Bot" target="_blank" class="p-2 text-on-surface-variant hover:text-primary transition-colors bg-surface-container-low rounded-full">
+                <span class="material-symbols-outlined !text-[20px]">code</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-8 max-w-[1400px] mx-auto w-full flex flex-col gap-8">
+        
+        <!-- Header Section -->
+        <div class="flex justify-between items-end">
+            <div>
+                <h2 class="text-2xl font-bold text-on-surface mb-1">Test Execution Overview</h2>
+                <p class="text-sm text-on-surface-variant opacity-80"><!-- STAT_SUMMARY --></p>
+            </div>
+            <button onclick="downloadReport()" class="px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-semibold flex items-center gap-2 hover:bg-blue-700 transition-colors shadow-sm">
+                <span class="material-symbols-outlined !text-[18px]">download</span>
+                Export Report (JSON)
+            </button>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- Total Tests -->
+            <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm flex flex-col">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs text-blue-800/70 uppercase tracking-wider font-semibold">Total Tests</span>
+                    <div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
+                        <span class="material-symbols-outlined !text-[20px]">list_alt</span>
+                    </div>
+                </div>
+                <span class="text-3xl font-bold text-on-surface"><!-- STAT_TOTAL --></span>
+            </div>
+
+            <!-- Passed Tests -->
+            <div class="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm flex flex-col">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs text-emerald-800/70 uppercase tracking-wider font-semibold">Passed</span>
+                    <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
+                        <span class="material-symbols-outlined !text-[20px]">check_circle</span>
+                    </div>
+                </div>
+                <span class="text-3xl font-bold text-on-surface"><!-- STAT_PASSED --></span>
+            </div>
+
+            <!-- Failed Tests -->
+            <div class="bg-white p-6 rounded-2xl border border-rose-100 shadow-sm flex flex-col">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs text-rose-800/70 uppercase tracking-wider font-semibold">Failed</span>
+                    <div class="p-2 bg-rose-50 text-rose-600 rounded-lg">
+                        <span class="material-symbols-outlined !text-[20px]">cancel</span>
+                    </div>
+                </div>
+                <span class="text-3xl font-bold text-on-surface"><!-- STAT_FAILED --></span>
+            </div>
+
+            <!-- Pass Rate -->
+            <div class="bg-white p-6 rounded-2xl border border-indigo-100 shadow-sm flex flex-col">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs text-indigo-800/70 uppercase tracking-wider font-semibold">Pass Rate</span>
+                    <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
+                        <span class="material-symbols-outlined !text-[20px]">percent</span>
+                    </div>
+                </div>
+                <span class="text-3xl font-bold text-on-surface"><!-- STAT_RATE --></span>
+            </div>
+        </div>
+
+        <!-- Test Details Table -->
+        <div class="bg-white rounded-2xl border border-outline-variant/30 shadow-sm overflow-hidden flex-grow">
+            <div class="px-6 py-4 border-b border-outline-variant/30 bg-surface-container-low/30">
+                <h3 class="font-semibold text-on-surface text-lg">Test Case Details</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-surface/50 border-b border-outline-variant/20">
+                            <th class="px-6 py-4 text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Test Case</th>
+                            <th class="px-6 py-4 text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Module</th>
+                            <th class="px-6 py-4 text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Duration</th>
+                            <th class="px-6 py-4 text-xs text-on-surface-variant uppercase tracking-wider font-semibold">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/10">
+                        <!-- TABLE_ROWS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function downloadReport() {
+            // Fetch the local report.json and trigger a download
+            fetch('report.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'report.json';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    alert('Could not download report.json. Make sure it exists in the same directory.');
+                    console.error('Download error:', error);
                 });
-            });
-        });
+        }
     </script>
-</body></html>
+</body>
+</html>
