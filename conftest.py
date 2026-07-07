@@ -35,8 +35,11 @@ def pytest_sessionfinish(session, exitstatus):
     now_utc = datetime.now(timezone.utc)
     is_midnight_th = now_utc.hour == 17
     
-    # If it is NOT the midnight run, and tests passed, skip sending the message
-    if not is_midnight_th and failed == 0 and errors == 0:
+    # Check if this run was triggered by a schedule (cron)
+    is_schedule = os.getenv("GITHUB_EVENT_NAME") == "schedule"
+    
+    # If it is NOT the midnight run, AND it's an automated schedule run, and tests passed -> skip sending
+    if is_schedule and not is_midnight_th and failed == 0 and errors == 0:
         print("\n[LINE Notification] Hourly check passed. Skipping LINE message.")
         return
         
