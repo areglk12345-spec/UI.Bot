@@ -21,10 +21,10 @@ def test_dashboard_ui(page: Page):
     expect(page.locator("h1")).to_have_text("UI Bot Test Report")
     
     # Check for the key metric cards
-    expect(page.locator("text=Total Tests")).to_be_visible()
-    expect(page.locator("text=Passed Tests")).to_be_visible()
-    expect(page.locator("text=Failed Tests")).to_be_visible()
-    expect(page.locator("text=Pass Rate")).to_be_visible()
+    expect(page.get_by_text("Total Tests", exact=True)).to_be_visible()
+    expect(page.get_by_text("Passed", exact=True)).to_be_visible()
+    expect(page.get_by_text("Failed", exact=True)).to_be_visible()
+    expect(page.get_by_text("Pass Rate", exact=True)).to_be_visible()
     
     # Verify the table exists
     expect(page.locator("table")).to_be_visible()
